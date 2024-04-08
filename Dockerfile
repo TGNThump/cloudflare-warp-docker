@@ -11,6 +11,7 @@ RUN apt-get update \
     && apt-get clean all
 
 COPY start.sh /start.sh
+RUN chmod +x /start.sh
 
 HEALTHCHECK --interval=15s --timeout=5s --start-period=30s --retries=3 \
   CMD curl -fsS "https://cloudflare.com/cdn-cgi/trace" | grep -qE "warp=(plus|on)" || exit 1
