@@ -2,6 +2,9 @@ on:
   push:
     tags:
       - 'v*'
+  schedule:
+    - cron: "0 12 * * *"
+  workflow_dispatch: {}
 
 env:
   REGISTRY: ghcr.io
@@ -39,3 +42,4 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
